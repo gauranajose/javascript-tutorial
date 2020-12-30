@@ -10,7 +10,7 @@ const RESULT_COMPUTER_WINS = 'COMPUTER WINS';
 
 let gameIsRunning = false;
 
-const getPlayerChoice = function () {
+const getPlayerChoice = () => {
   const selection = prompt(
     `${ROCK}, ${PAPER}, or ${SCISSORS}?`,
     ''
@@ -22,7 +22,7 @@ const getPlayerChoice = function () {
   return selection;
 };
 
-const getComputerChoice = function () {
+const getComputerChoice = () => {
   const randomValue = Math.random();
   if (randomValue < 0.34) {
     return ROCK;
@@ -42,19 +42,7 @@ const getWinner = (cChoice, pChoice) =>
     ? RESULT_PLAYER_WINS
     : RESULT_COMPUTER_WINS;
 
-//   if (cChoice === pChoice) {
-//     return RESULT_DRAW;
-//   } else if (
-//     (cChoice === ROCK && pChoice === PAPER) ||
-//     (cChoice === PAPER && pChoice === SCISSORS) ||
-//     (cChoice === SCISSORS && pChoice === ROCK)
-//   ) {
-//     return RESULT_PLAYER_WINS;
-//   } else {
-//     return RESULT_COMPUTER_WINS;
-//   }
-
-startGameBtn.addEventListener('click', function startGame() {
+startGameBtn.addEventListener('click', () => {
   if (gameIsRunning) {
     return;
   }
@@ -62,6 +50,21 @@ startGameBtn.addEventListener('click', function startGame() {
   console.log('Game is starting ... ');
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
-  const winner = getWinner(playerChoice, computerChoice);
-  console.log(winner);
+  const winner = getWinner(computerChoice, playerChoice);
+  let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore you `;
+  if (winner === RESULT_DRAW) {
+    message += 'had a draw.';
+  } else if (winner === RESULT_PLAYER_WINS) {
+    message += 'won';
+  } else {
+    message += 'lost';
+  }
+  alert(message);
+  gameIsRunning = false;
 });
+
+// not related to the game
+
+const sumUp = (a, b, c, d) => {};
+
+sumUp();
