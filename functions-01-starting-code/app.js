@@ -63,8 +63,4 @@ startGameBtn.addEventListener('click', () => {
   gameIsRunning = false;
 });
 
-// not related to the game
 
-const sumUp = (a, b, c, d) => {};
-
-sumUp();
