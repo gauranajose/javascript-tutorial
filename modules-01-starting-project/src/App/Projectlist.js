@@ -2,17 +2,18 @@ import { ProjectItem } from './ProjectItem.js';
 import { DOMHelper } from '../Utility/DOMHelper.js';
 
 export class ProjectList {
-  projects = [];
+  // projects = [];
 
   constructor(type) {
     this.type = type;
+    this.projects = [];
     const prjItems = document.querySelectorAll(`#${type}-projects li`);
     for (const prjItem of prjItems) {
       this.projects.push(
         new ProjectItem(prjItem.id, this.switchProject.bind(this), this.type)
       );
     }
-    console.log(this.projects);
+    // console.log(this.projects);
     this.connectDroppable();
   }
 
